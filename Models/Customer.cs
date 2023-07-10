@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace asp_geosystems_store.Models
 {
-    public class Employee
+    public class Customer
     {
         [Key]
         public int Id {get; set;}
@@ -12,8 +12,11 @@ namespace asp_geosystems_store.Models
         [DataType(DataType.Date)]
         public DateTime dob {get; set;}
         public int phone {get; set;}
-        public string department {get; set;}
-        public List<Customer> Customers {get; set;}
+        public string company {get; set;}
+        [ForeignKey("Employee")]
+        public Employee Employee {get;set;}
+
+
 
     }
 }

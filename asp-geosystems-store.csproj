@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-asp_geosystems_store-953b2f10-d22c-4c9a-9e96-1a071a286cc3</UserSecretsId>
     <RootNamespace>asp_geosystems_store</RootNamespace>
