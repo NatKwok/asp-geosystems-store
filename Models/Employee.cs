@@ -13,7 +13,6 @@ namespace asp_geosystems_store.Models
         public DateTime dob {get; set;}
         public int phone {get; set;}
         public string department {get; set;}
-        public List<Customer> Customers {get; set;}
 
     }
 }
