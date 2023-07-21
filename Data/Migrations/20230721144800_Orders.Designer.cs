@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using asp_geosystems_store.Data;
 
@@ -10,9 +11,11 @@ using asp_geosystems_store.Data;
 namespace asp_geosystems_store.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230721144800_Orders")]
+    partial class Orders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.8");
@@ -239,31 +242,6 @@ namespace asp_geosystems_store.Data.Migrations
                     b.ToTable("Employee");
                 });
 
-            modelBuilder.Entity("asp_geosystems_store.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("DeliveryCost")
-                        .HasColumnType("money");
-
-                    b.Property<decimal>("Tax")
-                        .HasColumnType("money");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("money");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Order");
-                });
-
             modelBuilder.Entity("asp_geosystems_store.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -279,15 +257,10 @@ namespace asp_geosystems_store.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("Product");
                 });
@@ -341,27 +314,6 @@ namespace asp_geosystems_store.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("asp_geosystems_store.Models.Order", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("asp_geosystems_store.Models.Product", b =>
-                {
-                    b.HasOne("asp_geosystems_store.Models.Order", null)
-                        .WithMany("Products")
-                        .HasForeignKey("OrderId");
-                });
-
-            modelBuilder.Entity("asp_geosystems_store.Models.Order", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
