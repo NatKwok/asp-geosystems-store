@@ -23,12 +23,12 @@ namespace asp_geosystems_store.Pages.Employees
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Employee == null)
+            if (id == null || _context.Employees == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employee.FirstOrDefaultAsync(m => m.Id == id);
+            var employee = await _context.Employees.FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {
                 return NotFound();

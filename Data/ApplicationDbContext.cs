@@ -10,8 +10,8 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
-    public DbSet<asp_geosystems_store.Models.Employee> Employee { get; set; }
-    public DbSet<asp_geosystems_store.Models.Product> Product { get; set; }
-    public DbSet<asp_geosystems_store.Models.Order> Order { get; set; }
+    public DbSet<asp_geosystems_store.Models.Employee> Employees { get; set; }
+    public DbSet<asp_geosystems_store.Models.Product> Products { get; set; }
+    public DbSet<asp_geosystems_store.Models.Order> Orders { get; set; }
 
 }

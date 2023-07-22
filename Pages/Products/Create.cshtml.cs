@@ -36,7 +36,7 @@ namespace asp_geosystems_store.Pages.Products
                 return Page();
             }
 
-            _context.Product.Add(Product);
+            _context.Products.Add(Product);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -23,9 +23,9 @@ namespace asp_geosystems_store.Pages.Products
 
         public async Task OnGetAsync()
         {
-            if (_context.Product != null)
+            if (_context.Products != null)
             {
-                Product = await _context.Product.ToListAsync();
+                Product = await _context.Products.ToListAsync();
             }
         }
     }

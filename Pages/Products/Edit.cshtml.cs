@@ -25,12 +25,12 @@ namespace asp_geosystems_store.Pages.Products
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var product =  await _context.Product.FirstOrDefaultAsync(m => m.Id == id);
+            var product =  await _context.Products.FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace asp_geosystems_store.Pages.Products
 
         private bool ProductExists(int id)
         {
-          return _context.Product.Any(e => e.Id == id);
+          return _context.Products.Any(e => e.Id == id);
         }
     }
 }

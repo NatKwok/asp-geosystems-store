@@ -23,9 +23,9 @@ namespace asp_geosystems_store.Pages.Employees
 
         public async Task OnGetAsync()
         {
-            if (_context.Employee != null)
+            if (_context.Employees != null)
             {
-                Employee = await _context.Employee.ToListAsync();
+                Employee = await _context.Employees.ToListAsync();
             }
         }
     }
