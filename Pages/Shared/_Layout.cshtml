@@ -8,7 +8,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - asp_geosystems_store</title>
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
     <link
       rel="stylesheet"
@@ -18,7 +17,7 @@
   </head>
   <body>
     <header>
-<nav class="bg-gray-800">
+<nav class="bg-white">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -51,11 +50,11 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a asp-page="/Index" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Geosystems</a>
-            <a asp-page="/Index" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Home</a>
-            <a asp-page="/About" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About Us</a>
+            <a asp-page="/Index" class="text-gray-800 rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 hover:text-white" aria-current="page">Geosystems</a>
+            <a asp-page="/Index" class="text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Home</a>
+            <a asp-page="/About" class="text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About Us</a>
              @if (SignInManager.IsSignedIn(User)) {
-                          <a asp-page="/ShowProducts" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Store</a>
+                          <a asp-page="/ShowProducts" class="text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Store</a>
 
              }
           </div>
@@ -64,9 +63,9 @@
       @if (SignInManager.IsSignedIn(User)){
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
-              <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-              <form class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >
-                <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+              <a class="text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+              <form class="text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >
+                <button type="submit" class="text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</button>
               </form>
           </div>
                 </div>
@@ -75,8 +74,8 @@
       else {
                 <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <a asp-area="Identity" asp-page="/Account/Register" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Register</a>
-            <a asp-area="Identity" asp-page="/Account/Login" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</a>
+            <a asp-area="Identity" asp-page="/Account/Register" class="text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Register</a>
+            <a asp-area="Identity" asp-page="/Account/Login" class="text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</a>
 
           </div>
                 </div>
