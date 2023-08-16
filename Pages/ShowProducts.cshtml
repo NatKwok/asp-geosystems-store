@@ -1,88 +1,28 @@
-﻿@page
-@model asp_geosystems_store.Pages.ShowProductsModel
-@{
-    ViewData["Title"] = "Product View";
-}
-<h1>Products</h1>
-<div class="columns">
-    <div class= "column is-3">
-        <a asp-page="/Checkout"><button>Checkout</button></a>
-        <p class="current-order"> Current Order </p>
-        <hr/>
-        <h3>Total Items</h3>
-        <p>@Model.totalItems</p>
+﻿@page 
+@model asp_geosystems_store.Pages.ShowProductsModel 
+@{ 
+    ViewData["Title"] = "Product View"; 
+    
+    } 
 
-        <h3>Total Price</h3>
-        <p>$@string.Format("{0:0.00}", @Model.totalPrice)</p>
-
-        <h3>Total Tax</h3>
-        <p>$@string.Format("{0:0.00}", @Model.totalTax)</p>
-
-         <h3>Grand Total</h3>
-         <p>$@string.Format("{0:0.00}", @Model.grandTotal)</p>
-
-
-        @* <ul id="cart">
-            @foreach (var product in Model.OrderItems)
-            {
-                <li>
-                    <div class="columns">
-                        <div class="column" style="text-align: left">
-                            <a asp-page="/Delete" asp-route-id="@product.Id">
-                                    <button class="nope">
-                                        <i class="material-icons">clear</i>
-                                    </button>
-                            </a>
-                        </div>
-                        <div class="column">
-                            <a asp-page="/Customize" asp-route-id="@product.Id">
-                                    <button class="nope">
-                                        <i class="material-icons">create</i>
-                                    </button>
-                            </a>
-                        </div>
-                        <div class="column current-order-items" style="text-align: left">
-                            @product.Quantity
-                        </div>
-                        <div class="column current-order-items" style="text-align: left">
-                            @product.MenuItem.Name
-                        </div>
-                        <div class="column current-order-items" style="text-align: left">
-                             $@string.Format("{0:0.00}", @product.BurgerPrice)
-                        </div>
-                        
-                    </div>
-                </li>
-            }
-        </ul> *@
-    </div>
-    <div class= "column is-9">
-        <form method="post" asp-page="/Menu">
-            <div id="productsWrapper" class="row">
-                @foreach (var product in Model.Products)
-                {
-                    <div class="col-sm-2">
-                        <a title="Order @product.Name">
-                            <div class="productInfo">
-                                
-                                <img class="product-image img-fluid img-thumbnail" src="@product.ImageName" alt="Image of @product.Name" />
-                                <p class="product-title">@product.Name</p> 
-                                <p class="description">@product.Description</p>
-                            </div>
-                        </a>
-
-                        <div class="action">
-                            <div class="columns">
-                                <div class="column">
-                                    <p class="price float-left product-title">$@string.Format("{0:0.00}", product.Price)</p>
-                                    <button class="btn btn-sm order-button float-left product-title" name="Order" value="@product.Id" type="submit" title="Order @product.Name">Add to Order</button>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                }
-            </div>
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <h2 class="sr-only">Products</h2>
+    <div class="grid grid-cols-4 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      <form method="post" asp-page="/Menu"> 
+        
+      @foreach (var product in Model.Products) { 
+        <a title="Order @product.Name" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img class="product-image img-fluid img-thumbnail" src="@product.ImageName" alt="Image of @product.Name" />
+            <h3 class="mt-4 text-lg text-gray-700 product-title">@product.Name</h3>
+            <h3 class="price float-left product-title">$@string.Format("{0:0.00}", product.Price)</h3>
+            <button class="rounded-md bg-indigo-600 px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 product-title" name="Order" value="@product.Id" type="submit" title="Order @product.Name">Add to Order</button>
+          </div>
+        </a>
+         }
+        
         </form>
     </div>
+  </div>
 </div>
