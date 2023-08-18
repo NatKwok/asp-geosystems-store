@@ -30,8 +30,20 @@ namespace asp_geosystems_store.Pages
         }
 
         public async Task<IActionResult> OnPostAsync() {
+            string itemIndex = Request.Form["Order"];
+            int itemInt = Int32.Parse(itemIndex);
+            Product add = db.Products.ToList().ElementAt(itemInt - 1);
+
+            OrderItem cartItem = new OrderItem { Product = add, CustomProduct = add.Name, ProductPrice = (float)add.Price, Quantity = 1 };
+            db.OrderItems.Add(cartItem);
+            db.SaveChanges();
+
+            Products = await db.Products.ToListAsync();
+            OrderItems = await db.OrderItems.ToListAsync();
 
             return Page();
+            // return RedirectToPage();
+
 
         }
 
