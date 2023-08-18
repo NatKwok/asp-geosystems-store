@@ -30,7 +30,7 @@ namespace asp_geosystems_store.Pages
         }
 
         public async Task<IActionResult> OnPostAsync() {
-            
+
             string itemIndex = Request.Form["Order"];
             int itemInt = Int32.Parse(itemIndex);
             Product add = db.Products.ToList().ElementAt(itemInt - 1);
@@ -43,8 +43,6 @@ namespace asp_geosystems_store.Pages
             OrderItems = await db.OrderItems.ToListAsync();
 
             return Page();
-            // return RedirectToPage();
-
 
         }
 
