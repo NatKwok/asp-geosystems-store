@@ -13,5 +13,6 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<asp_geosystems_store.Models.Employee> Employees { get; set; }
     public DbSet<asp_geosystems_store.Models.Product> Products { get; set; }
     public DbSet<asp_geosystems_store.Models.Order> Orders { get; set; }
+    public DbSet<asp_geosystems_store.Models.OrderItem> OrderItems { get; set; }
 
 }
