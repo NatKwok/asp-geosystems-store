@@ -30,6 +30,7 @@ namespace asp_geosystems_store.Pages
         }
 
         public async Task<IActionResult> OnPostAsync() {
+            
             string itemIndex = Request.Form["Order"];
             int itemInt = Int32.Parse(itemIndex);
             Product add = db.Products.ToList().ElementAt(itemInt - 1);
