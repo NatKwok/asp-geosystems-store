@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using asp_geosystems_store.Data;
 using asp_geosystems_store.Models;
-using System.Runtime.CompilerServices;
-using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 namespace asp_geosystems_store.Pages
 {
@@ -35,7 +33,24 @@ namespace asp_geosystems_store.Pages
             int itemInt = Int32.Parse(itemIndex);
             Product add = db.Products.ToList().ElementAt(itemInt - 1);
 
+            //Define cartItem
+            //Retreive cartItem
+            //If cartItem not found, then add new one
+            //If cartItem is found, add quantity
+
+            // var OrderItem = 
+
             OrderItem cartItem = new OrderItem { Product = add, CustomProduct = add.Name, ProductPrice = (float)add.Price, Quantity = 1 };
+
+            // if (cartItem == null)
+            // {
+            //     cartItem = new OrderItem { Product = add, CustomProduct = add.Name, ProductPrice = (float)add.Price, Quantity = 1 };
+            //     db.OrderItems.Add(cartItem);
+            // }
+
+            // else {
+            //     cartItem.Quantity++;
+            // }
             db.OrderItems.Add(cartItem);
             db.SaveChanges();
 
