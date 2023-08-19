@@ -20,6 +20,8 @@ namespace asp_geosystems_store.Pages
         public double totalPrice { get; set; } = 0;
         public double totalTax { get; set; } = 0;
         public double grandTotal { get; set; } = 0;
+        public string ShoppingCartId { get; set; }
+
 
         public async Task OnGetAsync() {
             Products = await db.Products.ToListAsync();
@@ -37,21 +39,24 @@ namespace asp_geosystems_store.Pages
             //Retreive cartItem
             //If cartItem not found, then add new one
             //If cartItem is found, add quantity
-
-            // var OrderItem = 
-
             OrderItem cartItem = new OrderItem { Product = add, CustomProduct = add.Name, ProductPrice = (float)add.Price, Quantity = 1 };
 
-            // if (cartItem == null)
-            // {
-            //     cartItem = new OrderItem { Product = add, CustomProduct = add.Name, ProductPrice = (float)add.Price, Quantity = 1 };
-            //     db.OrderItems.Add(cartItem);
-            // }
+            if (OrderItems.Contains(cartItem))
+            {   
+                foreach(OrderItem item in OrderItems){
+                    if (item.Equals(cartItem)) {
+                        item.Quantity++;
+                        
+                    }
+                } 
 
-            // else {
-            //     cartItem.Quantity++;
-            // }
-            db.OrderItems.Add(cartItem);
+            }
+
+            else {
+                db.OrderItems.Add(cartItem);
+
+            }
+            // db.OrderItems.Add(cartItem);
             db.SaveChanges();
 
             Products = await db.Products.ToListAsync();
