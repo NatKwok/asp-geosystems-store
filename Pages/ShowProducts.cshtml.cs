@@ -26,7 +26,8 @@ namespace asp_geosystems_store.Pages
         public async Task OnGetAsync() {
             Products = await db.Products.ToListAsync();
             OrderItems = await db.OrderItems.Include(oi => oi.Product).ToListAsync();
-
+            Product = await db.Products.FindAsync(Id);
+            
         }
 
         public async Task<IActionResult> OnPostAsync() {
@@ -36,27 +37,27 @@ namespace asp_geosystems_store.Pages
             Product add = db.Products.ToList().ElementAt(itemInt - 1);
 
             //Define cartItem
-            //Retreive cartItem
+            //Retrieve cartItem
             //If cartItem not found, then add new one
             //If cartItem is found, add quantity
             OrderItem cartItem = new OrderItem { Product = add, CustomProduct = add.Name, ProductPrice = (float)add.Price, Quantity = 1 };
+            db.OrderItems.Add(cartItem);
 
-            if (OrderItems.Contains(cartItem))
-            {   
-                foreach(OrderItem item in OrderItems){
-                    if (item.Equals(cartItem)) {
-                        item.Quantity++;
+            // if (Product.Id == cartItem.Product)
+            // {   
+            //     foreach(OrderItem item in OrderItems){
+            //         if (item.Equals(cartItem)) {
+            //             item.Quantity++;
                         
-                    }
-                } 
+            //         }
+            //     } 
 
-            }
+            // }
 
-            else {
-                db.OrderItems.Add(cartItem);
+            // else {
+            //     db.OrderItems.Add(cartItem);
 
-            }
-            // db.OrderItems.Add(cartItem);
+            // }
             db.SaveChanges();
 
             Products = await db.Products.ToListAsync();
