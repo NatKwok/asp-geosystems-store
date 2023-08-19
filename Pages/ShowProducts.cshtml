@@ -146,16 +146,16 @@
     function closeCartPanel() {
 
       console.log('button passed');
-      $("#cartPanel").hide();
-      $("#cartBackground").hide();
+      $("#cartPanel").fadeOut(400,'linear');
+      $("#cartBackground").fadeOut(800, 'linear');
 
     }
 
         function openCartPanel() {
 
       console.log('button passed');
-      $("#cartPanel").show();
-      $("#cartBackground").show();
+      $("#cartPanel").fadeIn(800, 'linear');
+      $("#cartBackground").fadeIn(400, 'linear');
 
     }
 
