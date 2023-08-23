@@ -5,6 +5,9 @@ module.exports = {
     './Views/**/*.chstml'
   ],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {},
   },
   plugins: [

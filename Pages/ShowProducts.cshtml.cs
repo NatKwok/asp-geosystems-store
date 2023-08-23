@@ -36,12 +36,14 @@ namespace asp_geosystems_store.Pages
             int itemInt = Int32.Parse(itemIndex);
             Product add = db.Products.ToList().ElementAt(itemInt - 1);
 
-            //Define cartItem
-            //Retrieve cartItem
-            //If cartItem not found, then add new one
-            //If cartItem is found, add quantity
             OrderItem cartItem = new OrderItem { Product = add, CustomProduct = add.Name, ProductPrice = (float)add.Price, Quantity = 1 };
             db.OrderItems.Add(cartItem);
+
+            //Define cartItem
+            //Retrieve cartItem
+            
+            //If cartItem is found, add quantity
+            //Else if cartItem not found, then add new one
 
             // if (Product.Id == cartItem.Product)
             // {   
